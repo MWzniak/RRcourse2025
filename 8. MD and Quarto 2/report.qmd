@@ -1,0 +1,67 @@
+---
+format: 
+  html: 
+    toc: true
+    toc-location: left
+    toc-title: "Table of contents"
+    toc-expand: true
+    theme: darkly
+    code-fold: false
+    code-tools: true
+    code-copy: true
+    code-line-numbers: true
+    page-layout: full       
+    fontsize: 1em 
+  pdf: default
+execute:
+  echo: false
+---
+
+![](Breaking_Bad_logo.png){fig-align="center"}
+
+## Description
+
+The show is an American crime drama television series created and produced by *Vince Gilligan* for AMC. Set and filmed in Albuquerque, New Mexico, the series follows *Walter White* (*Bryan Cranston*), an over-qualified, dispirited high-school chemistry teacher struggling with a recent diagnosis of stage-three lung cancer. White turns to a life of crime and partners with a former student, *Jesse Pinkman* (*Aaron Paul*), to produce and distribute methamphetamine to secure his family's financial future before he dies, while navigating the dangers of the criminal underworld.
+
+::: {.panel-tabset}
+
+## Episode list
+![](episodes.png){fig-align="center"} 
+
+## Critic reviews
+![](critics.png){fig-align="center"}
+
+## Season viewership
+![](views_seasons.png){fig-align="center"}
+
+## Episode viewership
+![*Source: Wikipeia*](views_episodes.png){fig-align="center"}
+
+:::
+
+## Total viewers by season
+```{python}
+import matplotlib.pyplot as plt
+import numpy as np
+
+seasons = ['1', '2', '3', '4', '5A', '5B']
+avg_viewers = [1.5, 1.5, 1.56, 1.9, 2.78 , 10.28]
+
+plt.figure(figsize=(8, 6))
+plt.plot(seasons, avg_viewers, marker='o', linewidth=2, markersize=10)
+plt.xlabel('Season')
+plt.ylabel('Viewers in milions')
+plt.grid(True, alpha=0.25)
+
+for i, v in enumerate(avg_viewers):
+    if seasons[i] in ['4', '5A', '5B']:
+        plt.text(i, v + 0.25 , f"{v}", ha='right', va='center')
+    else:
+        plt.text(i, v + 0.25 , f"{v}", ha='center', va='center')
+
+plt.tight_layout()
+plt.show()
+```
+*Source: Own work*
+
+The show has been slowly gaining popularity from season to season before shooting up in the final one, peaking at over 10 million viewers.
